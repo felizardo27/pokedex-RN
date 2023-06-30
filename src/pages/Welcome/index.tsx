@@ -7,11 +7,20 @@ export function Welcome() {
     return (
         <S.Container>
             <S.Content>
-                <AnimatedLottieView autoPlay source={pokemonAnimation} loop />
-            </S.Content>
-            <S.Footer>
+                <S.WrapperAnimation>
+                    <S.WrapperImage>
+                        <AnimatedLottieView
+                            style={{width:200}}
+                            source={pokemonAnimation}
+                            autoPlay
+                            loop
+                        />
+                    </S.WrapperImage>
+                </S.WrapperAnimation>
                 <S.Title>Bem Vindo</S.Title>
                 <S.SubTitle>Encontre todos os pokemons em um só lugar</S.SubTitle>
+            </S.Content>
+            <S.Footer>
             </S.Footer>
         </S.Container>
     );
