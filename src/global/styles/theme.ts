@@ -1,5 +1,7 @@
 export default {
     colors: {
-        'background': '#fff',
+        'background_white': '#fff',
+        'background_type_water': '#57B2DC',
+        'text_white': '#fff',
     }
 }
