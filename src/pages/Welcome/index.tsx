@@ -2,6 +2,7 @@ import React from "react";
 import AnimatedLottieView from "lottie-react-native";
 import pokemonAnimation from './pokemon.json';
 import * as S from './styles';
+import { Button } from "../../components/Button";
 
 export function Welcome() {
     return (
@@ -21,6 +22,7 @@ export function Welcome() {
                 <S.SubTitle>Encontre todos os pokemons em um só lugar</S.SubTitle>
             </S.Content>
             <S.Footer>
+                <Button title="Iniciar" />
             </S.Footer>
         </S.Container>
     );
