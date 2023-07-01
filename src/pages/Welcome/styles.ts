@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components/native";
-import { ITheme } from "../../shared/interfaces/ITheme";
+import ITheme from "../../shared/interfaces/ITheme";
 
 export const Container = styled.View`
     ${({theme}: ITheme) => css`
