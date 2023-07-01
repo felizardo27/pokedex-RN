@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components/native";
-import { ITheme } from "../../shared/interfaces/ITheme"; 
+import { ITheme } from "../../shared/types/ITheme"; 
 
 export const Container = styled.TouchableOpacity`
     ${({theme}: ITheme) => css`

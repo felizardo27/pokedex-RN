@@ -1,5 +1,7 @@
 import { ThemeType } from "styled-components";
 
-export default interface ITheme {
+type ITheme = {
     theme: ThemeType;
 }
+
+export default ITheme;
