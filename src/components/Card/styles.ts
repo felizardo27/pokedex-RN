@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components/native";
 import ITheme from "../../shared/types/ITheme";
-import { ThemeType } from "styled-components";
 import { PokemonCardProps } from "../../shared/types/Pokemon";
 
 export const PokemonCard = styled.TouchableOpacity<PokemonCardProps>`
@@ -14,10 +13,8 @@ export const PokemonCard = styled.TouchableOpacity<PokemonCardProps>`
 `;
 
 export const LeftSide = styled.View`
-  ${({ theme }: ITheme) => css`
-    width: 50%;
-    position: relative;
-  `}
+  width: 50%;
+  position: relative;
 `;
 
 export const PokemonId = styled.Text`
@@ -41,19 +38,15 @@ export const PokemonName = styled.Text`
 `;
 
 export const ImageCardDetailLeftSide = styled.Image`
-  ${({ theme }: ITheme) => css`
-    position: absolute;
-    width: 74px;
-    height: 32px;
-    left: 90px;
-    top: -10px;
-  `}
+  position: absolute;
+  width: 74px;
+  height: 32px;
+  left: 90px;
+  top: -10px;
 `;
 
 export const PokemonContentType = styled.View`
-  ${({ theme }: ITheme) => css`
-    flex-direction: row;
-  `}
+  flex-direction: row;
 `;
 
 export const PokemonType = styled.View`
@@ -81,5 +74,19 @@ export const PokemonTypeText = styled.Text`
 `;
 
 export const RightSide = styled.View`
-  ${({ theme }: ITheme) => css``}
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  position: relative;
+`;
+
+export const PokemonImage = styled.Image`
+  margin-top: -40px;
+  width: 130px;
+  height: 130px;
+`;
+
+export const PokeballDetail = styled.Image`
+ position: absolute;
+ right: -20px;
 `;
