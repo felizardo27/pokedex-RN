@@ -1,5 +1,9 @@
+import { ThemeType } from "styled-components";
+
 type PokemonType = {
-  type: string;
+  type: {
+    name: string,
+  };
 };
 
 export type Pokemon = {
@@ -13,3 +17,8 @@ export type request = {
   id: number;
   types: PokemonType[];
 };
+
+export type PokemonCardProps = { 
+  theme: ThemeType;
+  type: string;
+}
