@@ -4,6 +4,7 @@ import dotsImage from "../../assets/images/dots.png";
 import pokeball from "../../assets/images/pokeballCard.png";
 import * as S from "./styles";
 import { Pokemon } from "../../shared/types/Pokemon";
+import { FadeAnimation } from "../FadeAnimation";
 
 type Props = {
   data: Pokemon;
@@ -31,11 +32,13 @@ export function Card({ data, ...rest }: Props) {
 
       <S.RightSide>
         <S.PokeballDetail source={pokeball} />
-        <S.PokemonImage
-          source={{
-            uri: data.image,
-          }}
-        />
+        <FadeAnimation>
+          <S.PokemonImage
+            source={{
+              uri: data.image,
+            }}
+          />
+        </FadeAnimation>
       </S.RightSide>
     </S.PokemonCard>
   );
