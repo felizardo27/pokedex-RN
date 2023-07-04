@@ -2,7 +2,8 @@ import { Pokemon, request } from "../../shared/types/Pokemon";
 import api from "../api";
 
 export async function getAllPokemons(setPokemons: React.Dispatch<React.SetStateAction<Pokemon[]>>) {
-  const response = await api.get("/pokemon");
+  // const response = await api.get("/pokemon");
+  const response = await api.get("/pokemon/?offset=0&limit=151");
   const { results } = response.data;
 
   const payloadPokemons = await Promise.all(
