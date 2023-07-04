@@ -7,12 +7,13 @@ export async function getAllPokemons(setPokemons: React.Dispatch<React.SetStateA
 
   const payloadPokemons = await Promise.all(
     results.map(async (pokemon: Pokemon) => {
-      const { id, types } = await getMoreInfo(pokemon.url);
+      const { id, types, image } = await getMoreInfo(pokemon.url);
 
       return {
         name: pokemon.name,
         id,
         types,
+        image
       };
     })
   );
@@ -21,10 +22,11 @@ export async function getAllPokemons(setPokemons: React.Dispatch<React.SetStateA
 
 async function getMoreInfo(url: string): Promise<request> {
   const reponse = await api.get(url);
-  const { id, types } = reponse.data;
+  const { id, types, sprites } = reponse.data;
 
   return {
     id,
     types,
+    image: sprites.other['official-artwork'].front_default,
   };
 }

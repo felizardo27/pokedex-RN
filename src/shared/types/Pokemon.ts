@@ -11,11 +11,13 @@ export type Pokemon = {
   url: string;
   id: number;
   types: PokemonType[];
+  image: string;
 };
 
 export type request = {
   id: number;
   types: PokemonType[];
+  image: string;
 };
 
 export type PokemonCardProps = { 

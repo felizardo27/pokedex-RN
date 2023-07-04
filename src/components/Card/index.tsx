@@ -33,7 +33,7 @@ export function Card({ data, ...rest }: Props) {
         <S.PokeballDetail source={pokeball} />
         <S.PokemonImage
           source={{
-            uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`,
+            uri: data.image,
           }}
         />
       </S.RightSide>
