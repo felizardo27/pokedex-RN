@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Alert, ScrollView, Text } from "react-native";
-import { useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import * as S from "./styles";
-import { Feather } from "@expo/vector-icons";
 import api from "../../services/api";
 import { useTheme } from "styled-components";
+import { FadeAnimation } from "../../components/FadeAnimation";
+import { Feather } from "@expo/vector-icons";
 import circle from "../../assets/images/circle.png";
+import dots from "../../assets/images/dots.png";
 
 type RouteParams = {
   pokemonId: number;
@@ -50,6 +52,14 @@ type PokemonType = {
   };
 };
 
+type PokemonImage = {
+  other: {
+    "official-artwork": {
+      front_default: string;
+    };
+  };
+};
+
 type PokemonProps = {
   abilities: Ability[];
   id: number;
@@ -57,10 +67,12 @@ type PokemonProps = {
   stats: Stats[];
   color: string;
   types: PokemonType[];
+  sprites: PokemonImage;
 };
 
 export function About() {
   const route = useRoute();
+  const { goBack } = useNavigation();
   const { pokemonId } = route.params as RouteParams;
   const { colors } = useTheme();
   const [pokemon, setPokemon] = useState({} as PokemonProps);
@@ -70,7 +82,7 @@ export function About() {
     async function getPokemonDetails(pokemonId: number) {
       try {
         const response = await api.get(`/pokemon/${pokemonId}/`);
-        const { abilities, id, name, stats, types } = response.data;
+        const { abilities, id, name, stats, types, sprites } = response.data;
 
         const currentType = types[0].type.name as TypeName;
         const color = colors.backgroundCard[currentType];
@@ -82,6 +94,7 @@ export function About() {
           stats,
           color,
           types,
+          sprites,
         });
       } catch (e) {
         Alert.alert("Oops! Something went wrong!");
@@ -93,30 +106,59 @@ export function About() {
     getPokemonDetails(pokemonId);
   }, []);
 
+  function handleGoBak() {
+    goBack();
+  }
+
   return (
     <>
-      {load  ? 
+      {load ? (
         <>
           <Text style={{ marginTop: 200 }}>Carregando...</Text>
         </>
-       : 
-        <ScrollView>
+      ) : (
+        <ScrollView style={{ flex: 1, backgroundColor: "#fff" }}>
           <S.Header type={pokemon.types[0].type.name}>
-            <S.BackButton>
+            <S.BackButton onPress={handleGoBak}>
               <Feather name="chevron-left" size={24} color="#FFF" />
             </S.BackButton>
 
-            {/* <S.ContentImage>
+            <S.ContentImage>
               <S.CircleImage source={circle} />
-              <S.PokemonImage
-                source={{
-                  uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`,
-                }}
-              />
-            </S.ContentImage> */}
+              <FadeAnimation>
+                <S.PokemonImage
+                  source={{
+                    uri: pokemon.sprites.other["official-artwork"]
+                      .front_default,
+                  }}
+                />
+              </FadeAnimation>
+            </S.ContentImage>
+
+            <S.Content>
+              <S.PokemonId>#{pokemon.id}</S.PokemonId>
+              <S.PokemonName>{pokemon.name}</S.PokemonName>
+              <S.PokemonTypeContainer>
+                {pokemon.types.map((PokemonType) => (
+                  <S.PokemonType
+                    key={PokemonType.type.name}
+                    type={PokemonType.type.name}
+                  >
+                    <S.PokemonTypeText>
+                      {PokemonType.type.name}
+                    </S.PokemonTypeText>
+                  </S.PokemonType>
+                ))}
+              </S.PokemonTypeContainer>
+            </S.Content>
+            <S.DotsImage source={dots} />
           </S.Header>
+
+          <S.Container>
+            <S.Title type={pokemon.types[0].type.name} > Base States </S.Title>
+          </S.Container>
         </ScrollView>
-      }
+      )}
     </>
   );
 }
