@@ -1,9 +1,8 @@
 import styled, { css } from "styled-components/native";
-import ITheme from "../../shared/types/ITheme";
-import { PokemonCardProps } from "../../shared/types/Pokemon";
+import { TypeProps } from "../../shared/types/Pokemon";
 
-export const PokemonCard = styled.TouchableOpacity<PokemonCardProps>`
-  ${({ theme, type }: PokemonCardProps) => css`
+export const PokemonCard = styled.TouchableOpacity<TypeProps>`
+  ${({ theme, type }: TypeProps) => css`
     background-color: ${theme.colors.backgroundCard[type]};
     border-radius: 10px;
     margin-top: 30px;
@@ -18,7 +17,7 @@ export const LeftSide = styled.View`
 `;
 
 export const PokemonId = styled.Text`
-  ${({ theme }: ITheme) => css`
+  ${({ theme }: TypeProps) => css`
     font-weight: bold;
     font-size: 12px;
     line-height: 14px;
@@ -27,7 +26,7 @@ export const PokemonId = styled.Text`
 `;
 
 export const PokemonName = styled.Text`
-  ${({ theme }: ITheme) => css`
+  ${({ theme }: TypeProps) => css`
     font-weight: bold;
     font-size: 25px;
     line-height: 31px;
@@ -50,7 +49,7 @@ export const PokemonContentType = styled.View`
 `;
 
 export const PokemonType = styled.View`
-  ${({ theme, type }: PokemonCardProps) => css`
+  ${({ theme, type }: TypeProps) => css`
     padding: 5px;
     width: 65px;
     height: 25px;
@@ -64,7 +63,7 @@ export const PokemonType = styled.View`
 `;
 
 export const PokemonTypeText = styled.Text`
-  ${({ theme }: ITheme) => css`
+  ${({ theme }: TypeProps) => css`
     font-weight: 500;
     font-size: 12px;
     line-height: 14px;

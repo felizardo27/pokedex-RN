@@ -1,11 +1,12 @@
 import styled, { css } from "styled-components/native";
-import { TypeName } from ".";
+// import { TypeName } from ".";
 import ITheme from "../../shared/types/ITheme";
+import { TypeProps } from "../../shared/types/Pokemon";
 
-type TypeProps = {
-  theme: ITheme;
-  type: TypeName;
-};
+// type TypeProps = {
+//   theme: ITheme;
+//   type: TypeName;
+// };
 
 export const Header = styled.View<TypeProps>`
   ${({ theme, type }: TypeProps) => css`

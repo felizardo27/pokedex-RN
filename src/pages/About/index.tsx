@@ -8,66 +8,10 @@ import { FadeAnimation } from "../../components/FadeAnimation";
 import { Feather } from "@expo/vector-icons";
 import circle from "../../assets/images/circle.png";
 import dots from "../../assets/images/dots.png";
+import { PokemonProps, TypeName } from "../../shared/types/Pokemon";
 
 type RouteParams = {
   pokemonId: number;
-};
-
-type Ability = {
-  ability: {
-    name: string;
-  };
-};
-
-type Stats = {
-  base_stat: number;
-  stat: {
-    name: string;
-  };
-};
-
-export type TypeName =
-  | "bug"
-  | "dark"
-  | "dragon"
-  | "electric"
-  | "fairy"
-  | "fighting"
-  | "fire"
-  | "flying"
-  | "ghost"
-  | "grass"
-  | "ground"
-  | "ice"
-  | "normal"
-  | "poison"
-  | "psychic"
-  | "rock"
-  | "steel"
-  | "water";
-
-type PokemonType = {
-  type: {
-    name: TypeName;
-  };
-};
-
-type PokemonImage = {
-  other: {
-    "official-artwork": {
-      front_default: string;
-    };
-  };
-};
-
-type PokemonProps = {
-  abilities: Ability[];
-  id: number;
-  name: string;
-  stats: Stats[];
-  color: string;
-  types: PokemonType[];
-  sprites: PokemonImage;
 };
 
 export function About() {

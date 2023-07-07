@@ -1,18 +1,19 @@
 import styled, { css } from "styled-components/native";
 import ITheme from "../../shared/types/ITheme";
 import { Dimensions } from "react-native";
+import { TypeProps } from "../../shared/types/Pokemon";
 
 const windowWidth = Dimensions.get('window').width;
 
 export const Container = styled.View`
-    ${({theme}: ITheme) => css`
+    ${({theme}: TypeProps) => css`
         flex: 1;
         background-color: ${theme.colors.background_white};
     `}
 `;
 
 export const Header = styled.ImageBackground`
-    ${({theme}: ITheme) => css`
+    ${({theme}: TypeProps) => css`
         width: ${windowWidth}px;
         height: 220px;
         background-color: ${theme.colors.background_white};
@@ -22,7 +23,7 @@ export const Header = styled.ImageBackground`
 
 
 export const Title = styled.Text`
-    ${({theme}: ITheme) => css`
+    ${({theme}: TypeProps) => css`
         font-size: 32px;
         line-height: 38px;
         font-weight: bold;
