@@ -99,7 +99,29 @@ export function About() {
           </S.Header>
 
           <S.Container>
-            <S.Title type={pokemon.types[0].type.name} > Base States </S.Title>
+            <S.Title type={pokemon.types[0].type.name}> Base States </S.Title>
+            {pokemon.stats.map((attribute) => (
+              <S.StatusBar key={attribute.stat.name}>
+                <S.Attributes>{attribute.stat.name}</S.Attributes>
+                <S.AttributeValue>{attribute.base_stat}</S.AttributeValue>
+                <S.ContentBar>
+                  <S.ProgressBar
+                    type={pokemon.types[0].type.name}
+                    borderWidth={0}
+                    progress={100}
+                    width={attribute.base_stat}
+                    color={pokemon.color}
+                  />
+                </S.ContentBar>
+              </S.StatusBar>
+            ))}
+
+            <S.Title type={pokemon.types[0].type.name}> Abilities </S.Title>
+            {pokemon.abilities.map((currentAbility) => (
+              <S.StatusBar key={currentAbility.ability.name}>
+                <S.Ability>{currentAbility.ability.name}</S.Ability>
+              </S.StatusBar>
+            ))}
           </S.Container>
         </ScrollView>
       )}

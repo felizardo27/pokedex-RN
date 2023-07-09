@@ -1,12 +1,6 @@
 import styled, { css } from "styled-components/native";
-// import { TypeName } from ".";
-import ITheme from "../../shared/types/ITheme";
 import { TypeProps } from "../../shared/types/Pokemon";
-
-// type TypeProps = {
-//   theme: ITheme;
-//   type: TypeName;
-// };
+import * as Progress from "react-native-progress";
 
 export const Header = styled.View<TypeProps>`
   ${({ theme, type }: TypeProps) => css`
@@ -101,7 +95,7 @@ export const DotsImage = styled.Image`
 `;
 
 export const Container = styled.View`
-  ${({theme}: TypeProps) => css`
+  ${({ theme }: TypeProps) => css`
     flex: 1;
     padding: 20px;
     background-color: ${theme.colors.background_white};
@@ -112,12 +106,61 @@ export const Container = styled.View`
 `;
 
 export const Title = styled.Text<TypeProps>`
-  ${({theme, type}: TypeProps) => css`
+  ${({ theme, type }: TypeProps) => css`
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
     line-height: 19px;
     padding: 20px;
     color: ${theme.colors.boxType[type]};
+  `}
+`;
+
+export const StatusBar = styled.View`
+  width: 100%;
+  padding: 10px 20px;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const Attributes = styled.Text`
+  ${({ theme }: TypeProps) => css`
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    text-transform: capitalize;
+    color: ${theme.colors.light_text};
+    width: 90px;
+  `}
+`;
+
+export const AttributeValue = styled.Text`
+  ${({ theme }: TypeProps) => css`
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: right;
+    color: ${theme.colors.detail};
+    margin-left: 20px;
+  `}
+`;
+
+export const ContentBar = styled.View`
+  margin-left: 20px;
+`;
+
+export const ProgressBar = styled(Progress.Bar)<TypeProps>``;
+
+export const Ability = styled.Text`
+  ${({ theme }: TypeProps) => css`
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    padding: 10px 20px;
+    color: ${theme.colors.detail};
+    text-transform: capitalize;
   `}
 `;

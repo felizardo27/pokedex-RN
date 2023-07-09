@@ -6,6 +6,7 @@ export default {
     types: {
       water: "#58ABF6",
     },
+    detail: "#747476",
     light_text: "rgba(23,23,27,0.6)",
     backgroundCard: {
       bug: "#8BD674",
